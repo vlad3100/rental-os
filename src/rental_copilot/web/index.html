@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rental Copilot Console</title>
+  <meta name="description" content="Operator console for Munich Rental Copilot. Synthetic demo data only.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <a class="skip" href="#detail">Skip to the selected inquiry</a>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Munich Rental Copilot</span>
+    </div>
+    <p class="demo-note">Synthetic demo. Not production-ready. No legal advice.</p>
+    <div class="topbar-tools">
+      <span class="provider" id="provider"></span>
+      <label class="user-switch">
+        <span class="visually-hidden">Signed in as</span>
+        <select id="user-select" aria-label="Signed in as"></select>
+      </label>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Views">
+    <button class="tab is-active" data-view="inbox" aria-current="page">Inbox</button>
+    <button class="tab" data-view="facts">Fact sheets</button>
+    <div class="tab-actions">
+      <button class="btn btn-quiet" id="add-inquiry">Add test inquiry</button>
+      <button class="btn btn-primary" id="run-all">Run copilot on new inquiries</button>
+      <button class="btn btn-quiet" id="reset-demo">Reset demo data</button>
+    </div>
+  </nav>
+
+  <main id="view-inbox" class="inbox">
+    <section class="list-pane" aria-label="Inquiries">
+      <div class="filters" role="tablist" id="filters"></div>
+      <ol class="inquiry-list" id="inquiry-list"></ol>
+    </section>
+    <section class="detail-pane" id="detail" tabindex="-1" aria-live="polite"></section>
+  </main>
+
+  <main id="view-facts" class="facts" hidden></main>
+
+  <dialog id="add-dialog" aria-labelledby="add-title">
+    <form method="dialog" id="add-form">
+      <h2 id="add-title">Add a test inquiry</h2>
+      <p class="hint">Synthetic only. Do not paste real names, emails or phone numbers.</p>
+      <label>Flat <select name="unit_id" id="add-unit" required></select></label>
+      <label>Applicant name (optional) <input name="applicant_display_name" maxlength="80" autocomplete="off"></label>
+      <label>Contact channel
+        <select name="contact_channel">
+          <option value="email">Email</option>
+          <option value="phone">Phone</option>
+          <option value="">None given</option>
+        </select>
+      </label>
+      <label>Message <textarea name="message" rows="5" maxlength="5000" required></textarea></label>
+      <div class="dialog-actions">
+        <button class="btn btn-quiet" value="cancel" formnovalidate>Cancel</button>
+        <button class="btn btn-primary" value="submit" id="add-submit">Add inquiry</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

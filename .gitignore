@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Local runtime data (SQLite database, logs)
+var/
+*.db
+*.sqlite
+
+# Secrets
+.env
+
+# Private discovery material must never be committed
+docs/01-discovery/notes/
+private/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

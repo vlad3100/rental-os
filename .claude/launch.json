@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "rental-copilot",
+      "runtimeExecutable": "/Users/vlada/capital-gain-weights/product-bets-analysis-2026/RentalOS/.venv/bin/rental-copilot",
+      "runtimeArgs": ["serve", "--port", "8765"],
+      "port": 8765
+    }
+  ]
+}
